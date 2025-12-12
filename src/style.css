@@ -1,0 +1,97 @@
+/* src/styles.css */
+/* Estilos globais e personalizados com comentários em português */
+
+:root{
+  --brand-blue: #2f6fb0;
+  --bg-dark: #070b12;
+  --muted: #9aa6b8;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, #05060a 0%, #0a0f17 100%);
+  color: #e6eef8;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Navbar com leve gradiente */
+.navbar.bg-gradient {
+  background: linear-gradient(90deg, rgba(7,13,22,0.95), rgba(11,34,56,0.95));
+}
+
+/* Marca circular */
+.brand-circle{
+  width:44px;
+  height:44px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background: rgba(255,255,255,0.06);
+  font-weight:700;
+  color: #fff;
+  margin-right:6px;
+  box-shadow: 0 6px 18px rgba(47,111,176,0.08);
+}
+
+/* HERO */
+.hero{
+  min-height: 58vh;
+  background-size: cover;
+  background-position: center;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+/* Card de preview do lado direito */
+.preview-card{
+  background: rgba(255,255,255,0.03);
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+}
+
+/* Cards de serviço */
+.service-card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.03);
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+.service-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(15,40,70,0.12); }
+
+/* Tech badge */
+.tech-badge{
+  background: rgba(255,255,255,0.02);
+  border-radius: 10px;
+}
+
+/* Form de contacto */
+.contact-form {
+  background: rgba(255,255,255,0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Footer */
+.footer { background: linear-gradient(90deg, #040507, #071426); }
+
+/* Responsividade */
+@media (max-width: 767px) {
+  .hero { padding-top: 96px; min-height: 42vh; }
+  .hero .lead { font-size: 0.98rem; }
+}
+
+.text-muted {
+  color: #adb5bd !important; /* Cinza claro */
+}
+
+.contact-form input::placeholder,
+  .contact-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6); /* branco claro com opacidade */
+  }
+
+
+
+
