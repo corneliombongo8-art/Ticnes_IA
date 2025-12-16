@@ -4,12 +4,13 @@ import { motion } from "framer-motion";
 import { FaReact, FaFacebook, FaInstagram, FaWhatsapp, FaLinkedin, FaArrowRight } from "react-icons/fa";
 import { SiJavascript, SiBootstrap, SiPython } from "react-icons/si";
 
-import "../public/logo_ticnes2.png";
-import "../public/logo_ticnes.jpg";
 
 // Imagens
-const LOGO_IMAGE = "/public/logo_ticnes2.png";
-const HERO_IMAGE = "/public/logo_ticnes.jpg";
+
+const LOGO_IMAGE = "/logo_ticnes2.png";
+const HERO_IMAGE = "/logo_ticnes.jpg";
+
+
 
 export default function App() {
 
@@ -47,7 +48,13 @@ export default function App() {
       <motion.nav initial="hidden" animate="visible" variants={fadeInUp} className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
         <div className="container">
           <a className="navbar-brand d-flex align-items-center gap-2" href="#">
-            <img src={LOGO_IMAGE} className="brand-circle" style={{ width: "50px", height: "50px" }} />
+                <img
+     src={LOGO_IMAGE}
+          className="brand-circle"
+   style={{ width: "50px", height: "50px" }}
+  alt="TICNES Logo"
+/>
+
             <div>
               <div className="fw-bold">TICNES<sup>®</sup></div>
               <small className="text-muted">Augmented Ingenuity</small>
@@ -131,13 +138,16 @@ export default function App() {
         variants={fadeInUp}
         className="hero d-flex align-items-center"
         style={{
-          backgroundImage: `linear-gradient(180deg, rgba(3,12,20,0.55), rgba(3,12,20,0.55)), url(${HERO_IMAGE})`,
-          minHeight: "100vh",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          display: "flex",
-          alignItems: "center",
-        }}
+  backgroundImage: `linear-gradient(
+    180deg,
+    rgba(3,12,20,0.55),
+    rgba(3,12,20,0.55)
+  ), url(${HERO_IMAGE})`,
+  minHeight: "100vh",
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+}}
+
       >
         <div className="container">
           <div className="row align-items-center">
@@ -178,12 +188,13 @@ export default function App() {
                 animate={{ opacity: 1, transition: { delay: 0.5 } }}
                 className="card preview-card p-3 border-0"
               >
-                <img
-                  src={HERO_IMAGE}
-                  alt="TICNES"
-                  className="img-fluid rounded"
-                  style={{ maxHeight: 350, objectFit: "cover" }}
-                />
+               <img
+  src={HERO_IMAGE}
+  alt="TICNES"
+  className="img-fluid rounded"
+  style={{ maxHeight: 350, objectFit: "cover" }}
+/>
+
               </motion.div>
             </div>
           </div>
@@ -277,11 +288,12 @@ export default function App() {
       transition={{ duration: 0.8 }}
     >
       <div className="col-md-5">
-        <img
-          src="/public/imagem-ticnes.jpg" 
-          alt="Sobre TICNES"
-          className="img-fluid rounded shadow-sm"
-        />
+<img
+  src="/imagem-ticnes.jpg"
+  alt="Sobre TICNES"
+  className="img-fluid rounded shadow-sm"
+/>
+
       </div>
       <motion.div className="col-md-7">
         <motion.h2 className="fw-bold mb-3">Sobre a TICNES IA</motion.h2>
