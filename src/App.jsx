@@ -7,9 +7,9 @@ import { SiJavascript, SiBootstrap, SiPython } from "react-icons/si";
 
 // Imagens
 
-const LOGO_IMAGE = "/logo_ticnes2.png";
-const HERO_IMAGE = "/logo_ticnes.jpg";
-
+import LOGO_IMAGE from "/dist/assets/logo_ticnes2.png";
+import HERO_IMAGE from "/dist/assets/logo_ticnes.jpg";
+import image_about from "/dist/assets/imagem-ticnes.jpg"
 
 
 export default function App() {
@@ -289,7 +289,7 @@ export default function App() {
     >
       <div className="col-md-5">
 <img
-  src="/imagem-ticnes.jpg"
+  src={image_about}
   alt="Sobre TICNES"
   className="img-fluid rounded shadow-sm"
 />
