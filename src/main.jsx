@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // importa JS do Bootstrap (bundle)
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
+
 // CSS custom
 import './style.css';
 

@@ -1,31 +1,33 @@
 // src/App.jsx
 import React from "react";
 import { motion } from "framer-motion";
-import { FaReact, FaFacebook, FaInstagram, FaWhatsapp, FaLinkedin } from "react-icons/fa";
+import { FaReact, FaFacebook, FaInstagram, FaWhatsapp, FaLinkedin, FaArrowRight } from "react-icons/fa";
 import { SiJavascript, SiBootstrap, SiPython } from "react-icons/si";
 
+import "../public/logo_ticnes2.png";
+import "../public/logo_ticnes.jpg";
+
 // Imagens
-const LOGO_IMAGE = "../public/logo_ticnes2.png";
-const HERO_IMAGE = "../public/logo_ticnes.jpg";
+const LOGO_IMAGE = "/public/logo_ticnes2.png";
+const HERO_IMAGE = "/public/logo_ticnes.jpg";
 
 export default function App() {
 
- function scrollToSection(id) {
-  const element = document.getElementById(id);
-  if (!element) return;
+  function scrollToSection(id) {
+    const element = document.getElementById(id);
+    if (!element) return;
 
-  // Ajuste de offset para navbar sticky
-  const navbarHeight = document.querySelector(".navbar").offsetHeight;
-  const y = element.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+    // Ajuste de offset para navbar sticky
+    const navbarHeight = document.querySelector(".navbar").offsetHeight;
+    const y = element.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
 
-  window.scrollTo({ top: y, behavior: "smooth" });
+    window.scrollTo({ top: y, behavior: "smooth" });
 
-  // Fechar offcanvas se aberto
-  const offcanvasEl = document.getElementById("offcanvasMenu");
-  const offcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl);
-  if (offcanvas) offcanvas.hide();
-}
-
+    // Fechar offcanvas se aberto
+    const offcanvasEl = document.getElementById("offcanvasMenu");
+    const offcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl);
+    if (offcanvas) offcanvas.hide();
+  }
 
   // Variants para animação
   const fadeInUp = {
@@ -39,7 +41,7 @@ export default function App() {
   };
 
   return (
-    <div className="app-root">
+    <div className="app-root" style={{ fontFamily: "'Inter', 'Poppins', sans-serif", fontSize: "16px", lineHeight: 1.6 }}>
 
       {/* NAVBAR */}
       <motion.nav initial="hidden" animate="visible" variants={fadeInUp} className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
@@ -62,141 +64,134 @@ export default function App() {
               <li className="nav-item"><a className="nav-link" href="#stack">Tecnologias</a></li>
               <li className="nav-item"><a className="nav-link" href="#contacto">Contacto</a></li>
               <li className="nav-item"><a className="nav-link" href="#sobre-nos">Sobre nós</a></li>
-              <li className="nav-item ms-2"><a className="btn btn-outline-primary btn-sm hover-blue" href="#contacto">Participar</a></li>
+              <li className="nav-item ms-2">
+                <a className="btn btn-outline-primary btn-sm hover-blue d-flex align-items-center gap-2" href="#contacto">
+                  Participar <FaArrowRight />
+                </a>
+              </li>
             </ul>
           </div>
         </div>
       </motion.nav>
 
-   {/* OFFCANVAS MOBILE */}
-<div
-  className="offcanvas offcanvas-start bg-dark text-white"
-  tabIndex="-1"
-  id="offcanvasMenu"
-  aria-labelledby="offcanvasMenuLabel"
-  style={{ width: "250px" }}
->
-  <div className="offcanvas-header border-bottom border-secondary">
-    <h5 className="offcanvas-title fw-bold" id="offcanvasMenuLabel">Menu</h5>
-    <button
-      type="button"
-      className="btn-close btn-close-white"
-      data-bs-dismiss="offcanvas"
-      aria-label="Fechar"
-    ></button>
-  </div>
-  <div className="offcanvas-body">
-    <ul className="navbar-nav">
-    {["servicos", "stack", "contacto", "sobre-nos"].map((section, idx) => (
-  <React.Fragment key={section}>
-    <li className="nav-item">
-      <a
-        className="nav-link text-white fw-semibold"
-        href={`#${section}`}
-        onClick={() => {
-          scrollToSection(section);
-          // Remove o overlay escuro manualmente
-          const offcanvasEl = document.getElementById("offcanvasMenu");
-          const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasEl);
-          if (offcanvasInstance) offcanvasInstance.hide();
-          document.body.classList.remove("offcanvas-backdrop", "offcanvas-backdrop-show");
-        }}
-        style={{ fontSize: "1.05rem", padding: "0.75rem 1rem" }}
+      {/* OFFCANVAS MOBILE */}
+      <div
+        className="offcanvas offcanvas-start bg-dark text-white"
+        tabIndex="-1"
+        id="offcanvasMenu"
+        aria-labelledby="offcanvasMenuLabel"
+        style={{ width: "250px" }}
       >
-        {section === "servicos" ? "Serviços" : section === "stack" ? "Tecnologias" : section === "contacto" ? "Contacto" : "Sobre Nós"}
-      </a>
-    </li>
-    {idx < 3 && <hr className="my-1 border-secondary" />}
-  </React.Fragment>
-))}
+        <div className="offcanvas-header border-bottom border-secondary">
+          <h5 className="offcanvas-title fw-bold" id="offcanvasMenuLabel">Menu</h5>
+          <button
+            type="button"
+            className="btn-close btn-close-white"
+            data-bs-dismiss="offcanvas"
+            aria-label="Fechar"
+          ></button>
+        </div>
+        <div className="offcanvas-body">
+          <ul className="navbar-nav">
+            {["servicos", "stack", "contacto", "sobre-nos"].map((section, idx) => (
+              <React.Fragment key={section}>
+                <li className="nav-item">
+                  <a
+                    className="nav-link text-white fw-semibold"
+                    href={`#${section}`}
+                    onClick={() => scrollToSection(section)}
+                    style={{ fontSize: "1.05rem", padding: "0.75rem 1rem" }}
+                  >
+                    {section === "servicos" ? "Serviços" : section === "stack" ? "Tecnologias" : section === "contacto" ? "Contacto" : "Sobre Nós"}
+                  </a>
+                </li>
+                {idx < 3 && <hr className="my-1 border-secondary" />}
+              </React.Fragment>
+            ))}
 
-
-      {/* Botão Participar */}
-      <li className="nav-item mt-3">
-        <a
-          className="btn btn-outline-primary w-100 hover-blue"
-          href="#contacto"
-          onClick={() => {
-            scrollToSection("contacto");
-            const offcanvasEl = document.getElementById("offcanvasMenu");
-            const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasEl);
-            if (offcanvasInstance) offcanvasInstance.hide();
-            document.body.classList.remove("offcanvas-backdrop", "offcanvas-backdrop-show");
-          }}
-          style={{ fontSize: "1rem" }}
-        >
-          Participar
-        </a>
-      </li>
-    </ul>
-  </div>
-</div>
-
-
-    {/* HERO */}
-<motion.header
-  initial="hidden"
-  animate="visible"
-  variants={fadeInUp}
-  className="hero d-flex align-items-center"
-  style={{
-    backgroundImage: `linear-gradient(180deg, rgba(3,12,20,0.55), rgba(3,12,20,0.55)), url(${HERO_IMAGE})`,
-    minHeight: "80vh", // aumenta a altura do header
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-  }}
->
-  <div className="container">
-    <div className="row align-items-center">
-      <div className="col-lg-7 text-white text-center text-lg-start">
-        <motion.h1
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0, transition: { duration: 0.6 } }}
-          className="display-6 display-lg-5 fw-bold"
-        >
-          Digital Assets Development
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0, transition: { delay: 0.2 } }}
-          className="lead lead-lg text-white-50"
-        >
-          Criamos soluções em Inteligência Artificial, Data Science e Segurança da Informação — transformando dados em vantagem competitiva.
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, transition: { delay: 0.4 } }}
-          className="d-flex flex-wrap gap-2 mt-3 justify-content-center justify-content-lg-start"
-        >
-          <a href="#contacto" className="btn btn-primary btn-sm w-auto hover-blue">
-            Participar do Estágio
-          </a>
-          <a href="#servicos" className="btn btn-outline-light btn-sm w-auto">
-            Ver Serviços
-          </a>
-        </motion.div>
+            {/* Botão Participar */}
+            <li className="nav-item mt-3">
+              <a
+                className="btn btn-outline-primary w-100 hover-blue d-flex align-items-center justify-content-center gap-2"
+                href="#contacto"
+                onClick={() => scrollToSection("contacto")}
+                style={{ fontSize: "1rem" }}
+              >
+                Participar <FaArrowRight />
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div className="col-lg-5 d-none d-lg-block">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, transition: { delay: 0.5 } }}
-          className="card preview-card p-3 border-0"
-        >
-          <img
-            src={HERO_IMAGE}
-            alt="TICNES"
-            className="img-fluid rounded"
-            style={{ maxHeight: 350, objectFit: "cover" }} // aumenta também a imagem
-          />
-        </motion.div>
-      </div>
-    </div>
-  </div>
-</motion.header>
 
+      {/* HERO */}
+      <motion.header
+        initial="hidden"
+        animate="visible"
+        variants={fadeInUp}
+        className="hero d-flex align-items-center"
+        style={{
+          backgroundImage: `linear-gradient(180deg, rgba(3,12,20,0.55), rgba(3,12,20,0.55)), url(${HERO_IMAGE})`,
+          minHeight: "100vh",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-lg-7 text-white text-center text-lg-start">
+              <motion.h1
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0, transition: { duration: 0.6 } }}
+                className="display-6 display-lg-5 fw-bold"
+                style={{ fontFamily: "'Poppins', sans-serif" }}
+              >
+                Digital Assets Development
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0, transition: { delay: 0.2 } }}
+                className="lead lead-lg text-white-50"
+                style={{ fontFamily: "'Inter', sans-serif", fontSize: "1.2rem" }}
+              >
+                Criamos soluções em Inteligência Artificial, Data Science e Segurança da Informação — transformando dados em vantagem competitiva.
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, transition: { delay: 0.4 } }}
+                className="d-flex flex-wrap gap-2 mt-3 justify-content-center justify-content-lg-start"
+              >
+                <a href="#contacto" className="btn btn-primary btn-sm w-auto hover-blue d-flex align-items-center gap-2">
+             Participar do Estágio <FaArrowRight />
+                </a>
+              <a href="#servicos" className="btn btn-outline-light btn-sm w-auto p-3 d-flex align-items-center gap-2">
+                 Ver Serviços <FaArrowRight />
+               </a>
 
-      {/* SERVIÇOS */}
-      <motion.section id="servicos" className="py-5" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
+              </motion.div>
+            </div>
+            <div className="col-lg-5 d-none d-lg-block">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, transition: { delay: 0.5 } }}
+                className="card preview-card p-3 border-0"
+              >
+                <img
+                  src={HERO_IMAGE}
+                  alt="TICNES"
+                  className="img-fluid rounded"
+                  style={{ maxHeight: 350, objectFit: "cover" }}
+                />
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </motion.header>
+
+       {/* SERVIÇOS */}
+       <motion.section id="servicos" className="py-5" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
         <div className="container">
           <motion.h2 className="fw-bold text-center mb-4" variants={fadeInUp}>Nossos Serviços</motion.h2>
           <motion.p className="text-center text-muted mb-5" variants={fadeInUp}>Entrega de valor com foco em segurança e eficiência operacional.</motion.p>
@@ -283,7 +278,7 @@ export default function App() {
     >
       <div className="col-md-5">
         <img
-          src="../public/Imagem WhatsApp 2025-12-06 às 12.21.30_c7e79ff0.jpg" 
+          src="/public/imagem-ticnes.jpg" 
           alt="Sobre TICNES"
           className="img-fluid rounded shadow-sm"
         />
@@ -332,15 +327,29 @@ export default function App() {
   );
 }
 
-// Componentes internos com animação
+// Componentes internos (ServiceCard e TechBadge)
 function ServiceCard({ title, items }) {
   const fadeInUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } };
   return (
     <motion.div className="col-md-6 col-lg-3" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
       <div className="card h-100 service-card p-3 border-0">
         <div className="card-body">
-          <h5 className="fw-bold">{title}</h5>
-          <ul className="text-muted small">{items.map((it, idx) => <li key={idx}>{it}</li>)}</ul>
+        <h5
+  className="mb-3"
+  style={{
+    fontFamily: "'Poppins', sans-serif",
+    fontWeight: 600,
+    fontSize: "1.15rem",
+    color: "#0d6efd",
+    letterSpacing: "0.3px"
+  }}
+>
+  {title}
+</h5>
+
+          <ul className="text-muted small" style={{ fontFamily: "'Inter', sans-serif" }}>
+            {items.map((it, idx) => <li key={idx}>{it}</li>)}
+          </ul>
         </div>
       </div>
     </motion.div>
@@ -359,7 +368,10 @@ function TechBadge({ name }) {
   return (
     <motion.div className="col-6" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
       <div className="card h-100 p-3 border-0 bg-secondary bg-opacity-10">
-        <div className="card-body d-flex align-items-center">{icons[name]}<h6 className="mb-0 fw-bold text-white fs-6">{name}</h6></div>
+        <div className="card-body d-flex align-items-center">
+          {icons[name]}
+          <h6 className="mb-0 fw-bold text-white fs-6" style={{ fontFamily: "'Poppins', sans-serif" }}>{name}</h6>
+        </div>
       </div>
     </motion.div>
   );
