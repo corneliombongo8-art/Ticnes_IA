@@ -4,11 +4,6 @@ import { motion } from "framer-motion";
 import { FaReact, FaFacebook, FaInstagram, FaWhatsapp, FaLinkedin, FaArrowRight, FaGithub, FaEnvelope, FaPhone, FaMapMarkerAlt, FaGraduationCap, FaBriefcase, FaCalendarAlt, FaUser } from "react-icons/fa";
 import { SiJavascript, SiBootstrap, SiPython } from "react-icons/si";
 
-// Imagens
-import LOGO_IMAGE from "/logo_ticnes2-B01_ih5B.png";
-import HERO_IMAGE from "/logo_ticnes-DcQTKfFU.jpg";
-import image_about from "/imagem-ticnes-1hlBHmGu.jpg";
-import perfil from "/2Cornelio-C7nV9KKx.png";
 
 
 export default function App() {
@@ -47,7 +42,7 @@ export default function App() {
         <div className="container">
           <a className="navbar-brand d-flex align-items-center gap-2" href="#">
             <img
-              src={LOGO_IMAGE}
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzvInLP1fw7oi7thvFzR-4mh699EzC8QAv2Q&s"
               className="brand-circle"
               style={{ width: "50px", height: "50px" }}
               alt="TICNES Logo"
@@ -144,7 +139,7 @@ export default function App() {
             180deg,
             rgba(3,12,20,0.55),
             rgba(3,12,20,0.55)
-          ), url(${HERO_IMAGE})`,
+          ), url(https://ticnes.ai/assets/hero-bg-DvlFGvNV.jpg)`,
           minHeight: "100vh",
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -189,7 +184,7 @@ export default function App() {
                 className="card preview-card p-3 border-0"
               >
                 <img
-                  src={HERO_IMAGE}
+                  src="https://ticnes.ai/assets/hero-bg-DvlFGvNV.jpg"
                   alt="TICNES"
                   className="img-fluid rounded"
                   style={{ maxHeight: 350, objectFit: "cover" }}
@@ -257,55 +252,65 @@ export default function App() {
       >
         <div className="card border-0 shadow-lg overflow-hidden">
           <div className="row g-0">
-            {/* Coluna da Foto - ATUALIZADA COM IMAGEM REAL */}
-            <div className="col-md-4 bg-primary bg-opacity-10 d-flex align-items-center justify-content-center p-4">
-              <div className="text-center w-100">
-                {/* Contêiner da imagem com borda circular */}
-                <div className="position-relative mb-4" style={{ width: "200px", height: "200px", margin: "0 auto" }}>
-                  {/* Anel decorativo */}
-                  <div className="position-absolute top-0 start-0 w-100 h-100 rounded-circle border border-3 border-primary border-opacity-25"></div>
-                  
-                  {/* Imagem do perfil */}
-                  <img 
-                    src={perfil}
-                    alt="Cornélio Avelino Mbongo"
-                    className="rounded-circle w-100 h-100 object-fit-cover"
-                    style={{
-                      objectFit: 'cover',
-                      border: '4px solid white',
-                      boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)'
-                    }}
-                  />
-                  
-                  {/* Indicador de status online */}
-                  <div className="position-absolute bottom-0 end-0 bg-success rounded-circle border border-3 border-white" 
-                       style={{ width: "20px", height: "20px" }}></div>
-                </div>
-                
-                <h4 className="fw-bold mb-1">Cornélio Avelino Mbongo</h4>
-                <p className="text-muted mb-3">Desenvolvedor de Software</p>
-                
-                {/* Botão Meus Projetos */}
-                <a 
-                  href="https://drive.google.com/drive/folders/1bwNUEe5OeynFYJVLfvtUW53miEKFP2Ik" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="btn btn-primary btn-lg w-100 hover-blue d-flex align-items-center justify-content-center gap-2 mb-3"
-                >
-                  <FaGithub /> Meus Projetos
-                </a>
-                
-                {/* Botão Download CV */}
-                <a 
-                  href="https://drive.google.com/drive/folders/1bwNUEe5OeynFYJVLfvtUW53miEKFP2Ik" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="btn btn-outline-primary btn-lg w-100 d-flex align-items-center justify-content-center gap-2"
-                >
-                  <FaArrowRight /> Download CV
-                </a>
-              </div>
+           {/* Coluna da Foto */}
+<div className="col-md-4 bg-primary bg-opacity-10 d-flex align-items-center justify-content-center p-4">
+  <div className="text-center w-100">
+    {/* Contêiner da imagem */}
+    <div className="position-relative mb-4" style={{ width: "200px", height: "200px", margin: "0 auto" }}>
+      {/* Anel decorativo */}
+      <div className="position-absolute top-0 start-0 w-100 h-100 rounded-circle border border-3 border-primary border-opacity-25"></div>
+      
+      {/* Imagem do Google - LINK CORRETO */}
+      <img 
+        src=""
+        alt="Cornélio Avelino Mbongo"
+        className="rounded-circle w-100 h-100 object-fit-cover"
+        style={{
+          objectFit: 'cover',
+          border: '4px solid white',
+          boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)',
+          backgroundColor: '#f8f9fa' // cor de fundo enquanto carrega
+        }}
+        onError={(e) => {
+          // Fallback se a imagem não carregar
+          e.target.onerror = null;
+          e.target.style.display = 'none';
+          e.target.parentNode.innerHTML += `
+            <div class="rounded-circle w-100 h-100 d-flex align-items-center justify-content-center"
+                 style="background-color: #0D8ABC; color: white; font-size: 3rem; font-weight: bold;">
+              CM
             </div>
+          `;
+        }}
+      />
+      
+      {/* Indicador de status online */}
+      <div className="position-absolute bottom-0 end-0 bg-success rounded-circle border border-3 border-white" 
+           style={{ width: "20px", height: "20px" }}></div>
+    </div>
+    
+    <h4 className="fw-bold mb-1">Cornélio Avelino Mbongo</h4>
+    <p className="text-muted mb-3">Desenvolvedor de Software</p>
+    
+    <a 
+      href="https://drive.google.com/drive/folders/1bwNUEe5OeynFYJVLfvtUW53miEKFP2Ik" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="btn btn-primary btn-lg w-100 hover-blue d-flex align-items-center justify-content-center gap-2 mb-3"
+    >
+      <FaGithub /> Meus Projetos
+    </a>
+    
+    <a 
+      href="https://drive.google.com/drive/folders/1bwNUEe5OeynFYJVLfvtUW53miEKFP2Ik" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="btn btn-outline-primary btn-lg w-100 d-flex align-items-center justify-content-center gap-2"
+    >
+      <FaArrowRight /> Download CV
+    </a>
+  </div>
+</div>
             
             {/* Coluna das Informações */}
             <div className="col-md-8">
@@ -504,7 +509,7 @@ export default function App() {
           >
             <div className="col-md-5">
               <img
-                src={image_about}
+                src="https://static.scriptorserver.com/apdc/share/2024-08/2024-08-02113539_a8367704-2df5-4c69-916d-9766cbb5d3f0$$3d51dda4-e809-4a80-a7a9-bae6ef7feab4$$1be79718-0476-4cf5-848b-406244820b33$$BigImage$$pt$$1.jpg"
                 alt="Sobre TICNES"
                 className="img-fluid rounded shadow-sm"
               />
