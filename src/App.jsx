@@ -5,10 +5,11 @@ import { FaReact, FaFacebook, FaInstagram, FaWhatsapp, FaLinkedin, FaArrowRight,
 import { SiJavascript, SiBootstrap, SiPython } from "react-icons/si";
 
 // Imagens
-import LOGO_IMAGE from "/dist/assets/logo_ticnes2-B01_ih5B.png";
-import HERO_IMAGE from "/dist/assets/logo_ticnes-DcQTKfFU.jpg";
-import image_about from "/dist/assets/imagem-ticnes-1hlBHmGu.jpg";
-import perfil from "/dist/assets/2Cornelio.png";
+import LOGO_IMAGE from "/logo_ticnes2-B01_ih5B.png";
+import HERO_IMAGE from "/logo_ticnes-DcQTKfFU.jpg";
+import image_about from "/imagem-ticnes-1hlBHmGu.jpg";
+import perfil from "/2Cornelio-C7nV9KKx.png";
+
 
 export default function App() {
   function scrollToSection(id) {
