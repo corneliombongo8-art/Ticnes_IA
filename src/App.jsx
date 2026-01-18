@@ -1,19 +1,16 @@
 // src/App.jsx
 import React from "react";
 import { motion } from "framer-motion";
-import { FaReact, FaFacebook, FaInstagram, FaWhatsapp, FaLinkedin, FaArrowRight } from "react-icons/fa";
+import { FaReact, FaFacebook, FaInstagram, FaWhatsapp, FaLinkedin, FaArrowRight, FaGithub, FaEnvelope, FaPhone, FaMapMarkerAlt, FaGraduationCap, FaBriefcase, FaCalendarAlt, FaUser } from "react-icons/fa";
 import { SiJavascript, SiBootstrap, SiPython } from "react-icons/si";
 
-
 // Imagens
-
-import LOGO_IMAGE from "/dist/assets/logo_ticnes2.png";
-import HERO_IMAGE from "/dist/assets/logo_ticnes.jpg";
-import image_about from "/dist/assets/imagem-ticnes.jpg"
-
+import LOGO_IMAGE from "/dist/assets/logo_ticnes2-B01_ih5B.png";
+import HERO_IMAGE from "/dist/assets/logo_ticnes-DcQTKfFU.jpg";
+import image_about from "/dist/assets/imagem-ticnes-1hlBHmGu.jpg";
+import perfil from "/dist/assets/2Cornelio.png";
 
 export default function App() {
-
   function scrollToSection(id) {
     const element = document.getElementById(id);
     if (!element) return;
@@ -48,13 +45,12 @@ export default function App() {
       <motion.nav initial="hidden" animate="visible" variants={fadeInUp} className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
         <div className="container">
           <a className="navbar-brand d-flex align-items-center gap-2" href="#">
-                <img
-     src={LOGO_IMAGE}
-          className="brand-circle"
-   style={{ width: "50px", height: "50px" }}
-  alt="TICNES Logo"
-/>
-
+            <img
+              src={LOGO_IMAGE}
+              className="brand-circle"
+              style={{ width: "50px", height: "50px" }}
+              alt="TICNES Logo"
+            />
             <div>
               <div className="fw-bold">TICNES<sup>®</sup></div>
               <small className="text-muted">Augmented Ingenuity</small>
@@ -69,6 +65,7 @@ export default function App() {
             <ul className="navbar-nav ms-auto align-items-lg-center">
               <li className="nav-item"><a className="nav-link" href="#servicos">Serviços</a></li>
               <li className="nav-item"><a className="nav-link" href="#stack">Tecnologias</a></li>
+              <li className="nav-item"><a className="nav-link" href="#portfolio">Portfólio</a></li>
               <li className="nav-item"><a className="nav-link" href="#contacto">Contacto</a></li>
               <li className="nav-item"><a className="nav-link" href="#sobre-nos">Sobre nós</a></li>
               <li className="nav-item ms-2">
@@ -100,7 +97,7 @@ export default function App() {
         </div>
         <div className="offcanvas-body">
           <ul className="navbar-nav">
-            {["servicos", "stack", "contacto", "sobre-nos"].map((section, idx) => (
+            {["servicos", "stack", "portfolio", "contacto", "sobre-nos"].map((section, idx) => (
               <React.Fragment key={section}>
                 <li className="nav-item">
                   <a
@@ -109,10 +106,14 @@ export default function App() {
                     onClick={() => scrollToSection(section)}
                     style={{ fontSize: "1.05rem", padding: "0.75rem 1rem" }}
                   >
-                    {section === "servicos" ? "Serviços" : section === "stack" ? "Tecnologias" : section === "contacto" ? "Contacto" : "Sobre Nós"}
+                    {section === "servicos" ? "Serviços" : 
+                     section === "stack" ? "Tecnologias" : 
+                     section === "portfolio" ? "Portfólio" :
+                     section === "contacto" ? "Contacto" : 
+                     "Sobre Nós"}
                   </a>
                 </li>
-                {idx < 3 && <hr className="my-1 border-secondary" />}
+                {idx < 4 && <hr className="my-1 border-secondary" />}
               </React.Fragment>
             ))}
 
@@ -138,16 +139,15 @@ export default function App() {
         variants={fadeInUp}
         className="hero d-flex align-items-center"
         style={{
-  backgroundImage: `linear-gradient(
-    180deg,
-    rgba(3,12,20,0.55),
-    rgba(3,12,20,0.55)
-  ), url(${HERO_IMAGE})`,
-  minHeight: "100vh",
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-}}
-
+          backgroundImage: `linear-gradient(
+            180deg,
+            rgba(3,12,20,0.55),
+            rgba(3,12,20,0.55)
+          ), url(${HERO_IMAGE})`,
+          minHeight: "100vh",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
       >
         <div className="container">
           <div className="row align-items-center">
@@ -174,12 +174,11 @@ export default function App() {
                 className="d-flex flex-wrap gap-2 mt-3 justify-content-center justify-content-lg-start"
               >
                 <a href="#contacto" className="btn btn-primary btn-sm w-auto hover-blue d-flex align-items-center gap-2">
-             Participar do Estágio <FaArrowRight />
+                  Participar do Estágio <FaArrowRight />
                 </a>
-              <a href="#servicos" className="btn btn-outline-light btn-sm w-auto p-3 d-flex align-items-center gap-2">
-                 Ver Serviços <FaArrowRight />
-               </a>
-
+                <a href="#servicos" className="btn btn-outline-light btn-sm w-auto p-3 d-flex align-items-center gap-2">
+                  Ver Serviços <FaArrowRight />
+                </a>
               </motion.div>
             </div>
             <div className="col-lg-5 d-none d-lg-block">
@@ -188,21 +187,20 @@ export default function App() {
                 animate={{ opacity: 1, transition: { delay: 0.5 } }}
                 className="card preview-card p-3 border-0"
               >
-               <img
-  src={HERO_IMAGE}
-  alt="TICNES"
-  className="img-fluid rounded"
-  style={{ maxHeight: 350, objectFit: "cover" }}
-/>
-
+                <img
+                  src={HERO_IMAGE}
+                  alt="TICNES"
+                  className="img-fluid rounded"
+                  style={{ maxHeight: 350, objectFit: "cover" }}
+                />
               </motion.div>
             </div>
           </div>
         </div>
       </motion.header>
 
-       {/* SERVIÇOS */}
-       <motion.section id="servicos" className="py-5" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
+      {/* SERVIÇOS */}
+      <motion.section id="servicos" className="py-5" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
         <div className="container">
           <motion.h2 className="fw-bold text-center mb-4" variants={fadeInUp}>Nossos Serviços</motion.h2>
           <motion.p className="text-center text-muted mb-5" variants={fadeInUp}>Entrega de valor com foco em segurança e eficiência operacional.</motion.p>
@@ -239,6 +237,227 @@ export default function App() {
         </div>
       </motion.section>
 
+     {/* PORTFÓLIO */}
+<motion.section 
+  id="portfolio" 
+  className="py-5 bg-light"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+  variants={staggerContainer}
+>
+  <div className="container">
+    <motion.h2 className="fw-bold text-center mb-5" variants={fadeInUp}>Meu Portfólio</motion.h2>
+    
+    <div className="row justify-content-center">
+      <motion.div 
+        className="col-lg-10"
+        variants={fadeInUp}
+      >
+        <div className="card border-0 shadow-lg overflow-hidden">
+          <div className="row g-0">
+            {/* Coluna da Foto - ATUALIZADA COM IMAGEM REAL */}
+            <div className="col-md-4 bg-primary bg-opacity-10 d-flex align-items-center justify-content-center p-4">
+              <div className="text-center w-100">
+                {/* Contêiner da imagem com borda circular */}
+                <div className="position-relative mb-4" style={{ width: "200px", height: "200px", margin: "0 auto" }}>
+                  {/* Anel decorativo */}
+                  <div className="position-absolute top-0 start-0 w-100 h-100 rounded-circle border border-3 border-primary border-opacity-25"></div>
+                  
+                  {/* Imagem do perfil */}
+                  <img 
+                    src={perfil}
+                    alt="Cornélio Avelino Mbongo"
+                    className="rounded-circle w-100 h-100 object-fit-cover"
+                    style={{
+                      objectFit: 'cover',
+                      border: '4px solid white',
+                      boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)'
+                    }}
+                  />
+                  
+                  {/* Indicador de status online */}
+                  <div className="position-absolute bottom-0 end-0 bg-success rounded-circle border border-3 border-white" 
+                       style={{ width: "20px", height: "20px" }}></div>
+                </div>
+                
+                <h4 className="fw-bold mb-1">Cornélio Avelino Mbongo</h4>
+                <p className="text-muted mb-3">Desenvolvedor de Software</p>
+                
+                {/* Botão Meus Projetos */}
+                <a 
+                  href="https://drive.google.com/drive/folders/1bwNUEe5OeynFYJVLfvtUW53miEKFP2Ik" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="btn btn-primary btn-lg w-100 hover-blue d-flex align-items-center justify-content-center gap-2 mb-3"
+                >
+                  <FaGithub /> Meus Projetos
+                </a>
+                
+                {/* Botão Download CV */}
+                <a 
+                  href="https://drive.google.com/drive/folders/1bwNUEe5OeynFYJVLfvtUW53miEKFP2Ik" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="btn btn-outline-primary btn-lg w-100 d-flex align-items-center justify-content-center gap-2"
+                >
+                  <FaArrowRight /> Download CV
+                </a>
+              </div>
+            </div>
+            
+            {/* Coluna das Informações */}
+            <div className="col-md-8">
+              <div className="card-body p-5">
+                <div className="row g-4">
+                  {/* Informações Pessoais */}
+                  <div className="col-12">
+                    <h5 className="fw-bold text-primary mb-3 d-flex align-items-center gap-2">
+                      <FaUser /> Informações Pessoais
+                    </h5>
+                    <div className="row">
+                      <div className="col-md-6 mb-3">
+                        <div className="d-flex align-items-center gap-2 mb-2">
+                          <FaUser className="text-primary" />
+                          <span className="fw-semibold">Nome Completo:</span>
+                        </div>
+                        <p className="ms-4">Cornélio Avelino Mbongo</p>
+                      </div>
+                      <div className="col-md-6 mb-3">
+                        <div className="d-flex align-items-center gap-2 mb-2">
+                          <FaCalendarAlt className="text-primary" />
+                          <span className="fw-semibold">Idade:</span>
+                        </div>
+                        <p className="ms-4">19 anos</p>
+                      </div>
+                      <div className="col-md-6 mb-3">
+                        <div className="d-flex align-items-center gap-2 mb-2">
+                          <FaMapMarkerAlt className="text-primary" />
+                          <span className="fw-semibold">Nacionalidade:</span>
+                        </div>
+                        <p className="ms-4">Angolana</p>
+                      </div>
+                      <div className="col-md-6 mb-3">
+                        <div className="d-flex align-items-center gap-2 mb-2">
+                          <FaGraduationCap className="text-primary" />
+                          <span className="fw-semibold">Formação:</span>
+                        </div>
+                        <p className="ms-4">Estudante Universitário</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Formação Académica */}
+                  <div className="col-12">
+                    <h5 className="fw-bold text-primary mb-3 d-flex align-items-center gap-2">
+                      <FaGraduationCap /> Formação Académica
+                    </h5>
+                    <div className="d-flex align-items-start gap-3 mb-3">
+                      <div className="bg-primary bg-opacity-10 p-2 rounded">
+                        <FaGraduationCap className="text-primary mt-1" size={20} />
+                      </div>
+                      <div>
+                        <h6 className="fw-bold mb-1">Instituto Politécnico Industrial de Angola</h6>
+                        <p className="text-muted mb-1">Curso: Informática de Gestão</p>
+                        <p className="text-muted mb-1">Classe: 13</p>
+                        <p className="text-muted mb-0">Período: 2021 - Presente</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Experiência Profissional */}
+                  <div className="col-12">
+                    <h5 className="fw-bold text-primary mb-3 d-flex align-items-center gap-2">
+                      <FaBriefcase /> Experiência Profissional
+                    </h5>
+                    <div className="d-flex align-items-start gap-3 mb-3">
+                      <div className="bg-primary bg-opacity-10 p-2 rounded">
+                        <FaBriefcase className="text-primary mt-1" size={20} />
+                      </div>
+                      <div>
+                        <h6 className="fw-bold mb-1">TICNES IA</h6>
+                        <p className="text-muted mb-1">Cargo: Estagiário em Desenvolvimento de Software</p>
+                        <p className="text-muted mb-0">Período: 2023 - Presente</p>
+                      </div>
+                    </div>
+                    <div className="d-flex align-items-start gap-3">
+                      <div className="bg-primary bg-opacity-10 p-2 rounded">
+                        <FaBriefcase className="text-primary mt-1" size={20} />
+                      </div>
+                      <div>
+                        <h6 className="fw-bold mb-1">Desenvolvedor de Software Freelancer</h6>
+                        <p className="text-muted mb-1">Especialização: Desenvolvimento Web Full Stack</p>
+                        <p className="text-muted mb-0">Período: 2022 - Presente</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Habilidades Técnicas */}
+                  <div className="col-12">
+                    <h5 className="fw-bold text-primary mb-3">Habilidades Técnicas</h5>
+                    <div className="d-flex flex-wrap gap-2">
+                      <span className="badge bg-primary bg-opacity-25 text-primary py-2 px-3">React</span>
+                      <span className="badge bg-primary bg-opacity-25 text-primary py-2 px-3">JavaScript</span>
+                      <span className="badge bg-primary bg-opacity-25 text-primary py-2 px-3">HTML/CSS</span>
+                      <span className="badge bg-primary bg-opacity-25 text-primary py-2 px-3">Bootstrap</span>
+                      <span className="badge bg-primary bg-opacity-25 text-primary py-2 px-3">Node.js</span>
+                      <span className="badge bg-primary bg-opacity-25 text-primary py-2 px-3">Python</span>
+                      <span className="badge bg-primary bg-opacity-25 text-primary py-2 px-3">Git/GitHub</span>
+                      <span className="badge bg-primary bg-opacity-25 text-primary py-2 px-3">MySQL</span>
+                      <span className="badge bg-primary bg-opacity-25 text-primary py-2 px-3">Framer Motion</span>
+                      <span className="badge bg-primary bg-opacity-25 text-primary py-2 px-3">Vite</span>
+                    </div>
+                  </div>
+                  
+                  {/* Contacto Pessoal */}
+                  <div className="col-12">
+                    <h5 className="fw-bold text-primary mb-3">Contacto Pessoal</h5>
+                    <div className="row">
+                      <div className="col-md-6 mb-3">
+                        <div className="d-flex align-items-center gap-2 mb-2">
+                          <FaEnvelope className="text-primary" />
+                          <span className="fw-semibold">Email:</span>
+                        </div>
+                        <a href="mailto:cornelio.mbongo@gmail.com" className="ms-4 text-decoration-none">
+                          corneliombongo8@gmail.com
+                        </a>
+                      </div>
+                      <div className="col-md-6 mb-3">
+                        <div className="d-flex align-items-center gap-2 mb-2">
+                          <FaPhone className="text-primary" />
+                          <span className="fw-semibold">Telefone:</span>
+                        </div>
+                        <a href="tel:+244953186182" className="ms-4 text-decoration-none">
+                          +244 951 984 134
+                        </a>
+                      </div>
+                      <div className="col-md-6 mb-3">
+                        <div className="d-flex align-items-center gap-2 mb-2">
+                          <FaMapMarkerAlt className="text-primary" />
+                          <span className="fw-semibold">Localização:</span>
+                        </div>
+                        <p className="ms-4">Luanda, Angola</p>
+                      </div>
+                      <div className="col-md-6 mb-3">
+                        <div className="d-flex align-items-center gap-2 mb-2">
+                          <FaLinkedin className="text-primary" />
+                          <span className="fw-semibold">LinkedIn:</span>
+                        </div>
+                        <a href="https://linkedin.com/in/cornelio-mbongo" target="_blank" rel="noopener noreferrer" className="ms-4 text-decoration-none">
+                          linkedin.com/in/cornelio-mbongo
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  </div>
+</motion.section>
       {/* CONTACTO */}
       <motion.section id="contacto" className="py-5" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
         <div className="container">
@@ -248,15 +467,12 @@ export default function App() {
               <motion.form className="contact-form p-4 rounded shadow-sm" variants={staggerContainer}>
                 <div className="row g-3">
                   <motion.div className="col-md-6" variants={fadeInUp}>
-                   
                     <input className="form-control border border-secondary bg-transparent text-white" type="text" placeholder="Seu nome" style={{ opacity: 0.8 }} />
                   </motion.div>
                   <motion.div className="col-md-6" variants={fadeInUp}>
-                   
                     <input className="form-control border border-secondary bg-transparent text-white" type="email" placeholder="seu@exemplo.com" style={{ opacity: 0.8 }} />
                   </motion.div>
                   <motion.div className="col-12" variants={fadeInUp}>
-                  
                     <textarea className="form-control border border-secondary bg-transparent text-white" rows="5" placeholder="Escreva a sua mensagem..." style={{ opacity: 0.8 }}></textarea>
                   </motion.div>
                   <motion.div className="col-12 d-grid" variants={fadeInUp}>
@@ -269,72 +485,64 @@ export default function App() {
         </div>
       </motion.section>
 
+      {/* SOBRE NÓS */}
+      <motion.section
+        id="sobre-nos"
+        className="py-5 bg-light text-dark"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        <div className="container">
+          {/* 1ª Linha: Sobre a TICNES */}
+          <motion.div 
+            className="row g-5 align-items-center mb-5"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="col-md-5">
+              <img
+                src={image_about}
+                alt="Sobre TICNES"
+                className="img-fluid rounded shadow-sm"
+              />
+            </div>
+            <motion.div className="col-md-7">
+              <motion.h2 className="fw-bold mb-3">Sobre a TICNES IA</motion.h2>
+              <motion.p>
+                A <motion.strong>TICNES IA</motion.strong> é uma organização dedicada à transformação digital, desenvolvimento em Inteligência Artificial e soluções tecnológicas inovadoras.
+              </motion.p>
+              <motion.p>
+                Nossa missão é liderar a criação de soluções digitais que combinem tecnologia avançada com foco humano, fornecendo frameworks de IA seguros, escaláveis e sustentáveis.
+              </motion.p>
+              <motion.p>
+                Valorizamos ética, inovação com propósito, excelência e colaboração, promovendo capacitação digital em todos os níveis.
+              </motion.p>
 
-     {/* SOBRE NÓS */}
-<motion.section
-  id="sobre-nos"
-  className="py-5 bg-light text-dark"
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true }}
->
-  <div className="container">
+              <motion.p><strong>Visão:</strong> Tornarmo-nos uma empresa de nível mundial, na área de ciber-segurança/segurança da informação, em Angola</motion.p>
 
-    {/* 1ª Linha: Sobre a TICNES */}
-    <motion.div 
-      className="row g-5 align-items-center mb-5"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-    >
-      <div className="col-md-5">
-<img
-  src={image_about}
-  alt="Sobre TICNES"
-  className="img-fluid rounded shadow-sm"
-/>
+              <motion.p><strong>Missão:</strong> Desenvolvimento e implementação de serviços avançados de segurança para as TICs, permitindo aos nossos clientes serem resilientes face as ameaças e riscos que enfrentam, de maneira que o seu negócio não seja afectado por elas.</motion.p>
 
-      </div>
-      <motion.div className="col-md-7">
-        <motion.h2 className="fw-bold mb-3">Sobre a TICNES IA</motion.h2>
-        <motion.p>
-          A <motion.strong>TICNES IA</motion.strong> é uma organização dedicada à transformação digital, desenvolvimento em Inteligência Artificial e soluções tecnológicas inovadoras.
-        </motion.p>
-        <motion.p>
-          Nossa missão é liderar a criação de soluções digitais que combinem tecnologia avançada com foco humano, fornecendo frameworks de IA seguros, escaláveis e sustentáveis.
-        </motion.p>
-        <motion.p>
-          Valorizamos ética, inovação com propósito, excelência e colaboração, promovendo capacitação digital em todos os níveis.
-        </motion.p>
-
-        <motion.p><strong>Visão:</strong>Tornarmo-nos uma empresa de nível mundial, na área de ciber-segurança/segurança da informação, em Angola</motion.p>
-
-        <motion.p><strong>Missao</strong>Desenvolvimento e implementação de serviços avançados de segurança para as TICs, permitindo aos nossos clientes serem resilientes face as ameaças e riscos que enfrentam, de maneira que o seu negócio não seja afectado por elas.</motion.p>
-
-        <motion.p><strong>Valores:</strong>Os nossos valores são principalmente os da Integridade, excelência operacional, a perseverança, a paixão para fazer a diferença, e o desenvolvimento pessoal e profissional dos nossos colaboradores.</motion.p>
-
-      </motion.div>
-    </motion.div>
-
-  </div>
-</motion.section>
-
-
+              <motion.p><strong>Valores:</strong> Os nossos valores são principalmente os da Integridade, excelência operacional, a perseverança, a paixão para fazer a diferença, e o desenvolvimento pessoal e profissional dos nossos colaboradores.</motion.p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </motion.section>
 
       {/* FOOTER */}
       <motion.footer className="py-4 footer bg-black text-center text-light" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
         <div className="container">
           <div className="mb-2">TICNES® Augmented Ingenuity</div>
           <div className="mb-3 mt-3 d-flex justify-content-center gap-3">
-            <a href="https://www.facebook.com/ticnes" target="_blank" style={{ color: "#aaa" }}><FaFacebook size={22} /></a>
-            <a href="https://www.instagram.com/ticnes_cyber_security/" target="_blank" style={{ color: "#aaa" }}><FaInstagram size={22} /></a>
-            <a href="https://wa.me/953186182" target="_blank" style={{ color: "#aaa" }}><FaWhatsapp size={22} /></a>
-            <a href="https://www.linkedin.com/company/ticnes-lda/posts/" target="_blank" style={{ color: "#aaa" }}><FaLinkedin size={22} /></a>
+            <a href="https://www.facebook.com/ticnes" target="_blank" rel="noopener noreferrer" style={{ color: "#aaa" }}><FaFacebook size={22} /></a>
+            <a href="https://www.instagram.com/ticnes_cyber_security/" target="_blank" rel="noopener noreferrer" style={{ color: "#aaa" }}><FaInstagram size={22} /></a>
+            <a href="https://wa.me/953186182" target="_blank" rel="noopener noreferrer" style={{ color: "#aaa" }}><FaWhatsapp size={22} /></a>
+            <a href="https://www.linkedin.com/company/ticnes-lda/posts/" target="_blank" rel="noopener noreferrer" style={{ color: "#aaa" }}><FaLinkedin size={22} /></a>
           </div>
           <small style={{ color: "#555" }}>© {new Date().getFullYear()} — Todos os direitos reservados</small>
         </div>
       </motion.footer>
-
     </div>
   );
 }
@@ -346,19 +554,18 @@ function ServiceCard({ title, items }) {
     <motion.div className="col-md-6 col-lg-3" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
       <div className="card h-100 service-card p-3 border-0">
         <div className="card-body">
-        <h5
-  className="mb-3"
-  style={{
-    fontFamily: "'Poppins', sans-serif",
-    fontWeight: 600,
-    fontSize: "1.15rem",
-    color: "#0d6efd",
-    letterSpacing: "0.3px"
-  }}
->
-  {title}
-</h5>
-
+          <h5
+            className="mb-3"
+            style={{
+              fontFamily: "'Poppins', sans-serif",
+              fontWeight: 600,
+              fontSize: "1.15rem",
+              color: "#0d6efd",
+              letterSpacing: "0.3px"
+            }}
+          >
+            {title}
+          </h5>
           <ul className="text-muted small" style={{ fontFamily: "'Inter', sans-serif" }}>
             {items.map((it, idx) => <li key={idx}>{it}</li>)}
           </ul>
@@ -377,6 +584,7 @@ function TechBadge({ name }) {
     Bootstrap: <SiBootstrap size={28} className="me-2 text-primary" />,
     Python: <SiPython size={28} className="me-2 text-info" />,
   };
+  
   return (
     <motion.div className="col-6" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
       <div className="card h-100 p-3 border-0 bg-secondary bg-opacity-10">
